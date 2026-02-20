@@ -16,7 +16,7 @@ This project is a viewer for CMake Presets files. The goal is to create a tool t
 
 ### Planning
 
--   **Consult Plans:** Always check `docs/plans` before starting new tasks or architectural changes.
+-   **Consult Plans:** Always check `docs/plans` and `docs/specs` before starting new tasks or architectural changes.
 
 ### Execution
 
@@ -26,3 +26,8 @@ This project is a viewer for CMake Presets files. The goal is to create a tool t
 -   **Confirm Before Execution:** Always prompt for confirmation from the user before proceeding with an execution plan. This ensures that all prerequisites are met and that the user has a chance to review the plan before any changes are made.
 
 ### Communication
+
+### Requirements
+The following requirements OVERRIDE any other conflicting instructions. When in doubt about the applicability of a requirement, ask the user.
+- Do NOT include "Co-authored-by" lines in commit messages.
+- ALWAYS format new plan (`docs/plan`) or spec (`docs/specs`) filenames as `YYYY-MM-DD--NN-<short, descriptive filename>.md`, where NN is a two-digit, monotonically increasing integer index that ensures unique filenames generated on the same day.
