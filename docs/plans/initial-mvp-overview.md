@@ -36,32 +36,36 @@ A separate module that handles all aspects of the user interface. For the initia
 
 A **pure JavaScript/TypeScript web application** bundled into a **single HTML file**.
 
-### Implementation Steps
+### Implementation Phases
 
-1.  **Install Tools:**
-    *   Install Node.js and npm. On a Debian-based system, this can be done with `sudo apt update && sudo apt install nodejs npm`.
+To ensure an iterative and manageable development process, the initial MVP will be implemented in the following phases. Each phase is designed to be completed within 1-2 days, with clear validation points and minimal dependencies.
 
-2.  **Project Setup:**
-    *   Set up the project structure with `src`, `tests`, and `dist` directories.
-    *   Initialize a new project using `npm`.
-    *   Install and configure `Vitest` as the testing framework.
+#### Phase 1: Project Setup (Completed)
+*   **Goal:** Establish the foundational project structure and development environment.
+*   **Tasks:** Node.js, npm, Vitest installation; project initialization with `src`, `tests`, `dist` directories; `.gitignore` setup.
+*   **Validation:** All setup commands execute successfully; Vitest runs basic test.
+*   **Dependencies:** None.
 
-3.  **Core Logic (Test-Driven Development):**
-    *   **Write a Failing Test:** Start by writing a `Vitest` test for parsing a basic `CMakePresets.json` file. This test will fail initially.
-    *   **Implement the Logic:** Write the necessary TypeScript code to make the test pass.
-    *   **Refactor:** Clean up and improve the code while ensuring the tests still pass.
-    *   **Repeat:** Continue this TDD cycle for all core functionalities:
-        *   Handling `include` directives.
-        *   Resolving `inherits` relationships to build the graph.
-        *   Building the graph data structure (nodes and edges).
+#### Phase 2: Core Logic - Basic Parsing & Graph Structure
+*   **Goal:** Implement the core logic for parsing a single `CMakePresets.json` file and building its internal graph representation.
+*   **Tasks:** Define TypeScript types for presets; implement JSON parsing; build initial graph data structure (nodes and edges) for `inherits` relationships within a single file.
+*   **Validation:** Comprehensive unit tests covering valid/invalid JSON structures, correct parsing, and accurate graph node/edge creation for single-file scenarios.
+*   **Dependencies:** Phase 1.
 
-4.  **UI and Integration:**
-    *   Create the main `index.html` file and a file input for selecting the root presets file.
-    *   Connect the UI to the core logic API to get the graph data.
-    *   Render the interactive graph using a visualization library like D3.js.
-    *   Implement panning, zooming, and node labeling.
+#### Phase 3: UI - Basic Visualization
+*   **Goal:** Develop a basic web-based UI to visually render the graph generated from Phase 2 using D3.js, providing early visual feedback.
+*   **Tasks:** Create `index.html` with a placeholder for the graph; integrate D3.js; implement basic rendering of nodes and edges (from mock data or Phase 2 output); display preset names as labels.
+*   **Validation:** Visual inspection: a static graph is correctly displayed in a web browser, showing nodes and connections.
+*   **Dependencies:** Phase 2 (for data structure understanding).
 
-5.  **Finalization and Bundling:**
-    *   Style the graph for better readability.
-    *   Bundle the application into a single, self-contained HTML file.
-    *   Add end-to-end tests to ensure the entire application works as expected.
+#### Phase 4: Advanced Logic & UI - Includes & Recursion
+*   **Goal:** Extend the core logic to handle recursive `include` directives and enhance the UI for navigating larger graphs.
+*   **Tasks:** Implement recursive file loading and parsing for `include` directives; update graph construction to reflect cross-file inheritance; integrate basic panning and zooming capabilities in the D3.js visualization.
+*   **Validation:** Integration tests with multiple `CMakePresets.json` files and `include` directives; interactive validation of zoom/pan functionality in the browser.
+*   **Dependencies:** Phase 2, Phase 3.
+
+#### Phase 5: Finalization - Bundling & Polish
+*   **Goal:** Prepare the application for distribution as a single, self-contained HTML file, including final styling and cross-platform verification.
+*   **Tasks:** Implement a bundling process to inline all CSS and JavaScript into a single HTML file; apply final styling for readability and user experience; verify application functionality on both Windows and Linux environments.
+*   **Validation:** The generated HTML file runs correctly as a standalone application on target platforms, all features (parsing, graph display, interactivity) function as expected.
+*   **Dependencies:** Phase 4.
