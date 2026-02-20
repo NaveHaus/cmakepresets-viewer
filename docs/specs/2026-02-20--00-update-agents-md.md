@@ -13,7 +13,8 @@ I will update `AGENTS.md` to reflect the project's architectural decisions and w
 
 3.  **Guidelines**:
     *   **Planning**:
-        *   Consult `docs/plans` before starting new tasks.
+        *   Consult `docs/plans` and `docs/specs` before starting new tasks.
+        *   New plan and spec filenames should have the format `YYYY-MM-DD--NN-<short, descriptive spec name>.md`
     *   **Execution**:
         *   **TDD First**: Implement core logic using Test-Driven Development.
         *   **Separation of Concerns**: Keep parsing logic separate from UI rendering code.
