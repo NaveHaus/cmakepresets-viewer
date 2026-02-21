@@ -29,3 +29,4 @@ The following requirements OVERRIDE any other conflicting instructions. When in 
 - ALWAYS format new plan (`docs/plan`) or spec (`docs/specs`) filenames as `YYYY-MM-DD--NN-<short, descriptive filename>.md`, where NN is a two-digit, monotonically increasing integer index that ensures unique filenames generated on the same day.
 
 ## Mistakes to Avoid
+- To execute commands on Windows, prefer PowerShell 7 cmdlets over bash commands.
