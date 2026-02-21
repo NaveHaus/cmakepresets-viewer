@@ -12,7 +12,7 @@
 
 ---
 
-## Step 2.1 (1–2 days): Define core types + minimal parser for a single file
+## Step 2.1 (1–2 days): Define core types + minimal parser for a single file ✅ Completed
 ### Deliverables
 - `src/core/types.ts`
   - `PresetKind` union: `"configure" | "build" | "test" | "package"`.
@@ -46,7 +46,7 @@
 
 ---
 
-## Step 2.2 (1–2 days): Build graph model from parsed presets (single file)
+## Step 2.2 (1–2 days): Build graph model from parsed presets (single file) ✅ Completed
 ### Deliverables
 - `src/core/graph.ts`
   - `GraphNode`: `{ id: string; label: string; kind: PresetKind; meta?: { hidden?: boolean; displayName?: string; description?: string } }`
@@ -96,7 +96,7 @@
 
 ---
 
-## Step 2.4 (1–2 days): Error reporting strategy (DX) + fixture-based tests
+## Step 2.4 (1–2 days): Error reporting strategy (DX) + fixture-based tests ✅ Completed
 
 ### Deliverables
 - Choose API error strategy (to stabilize for Phase 3 UI):
