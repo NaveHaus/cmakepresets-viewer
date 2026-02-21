@@ -1,4 +1,4 @@
-import { Graph as GraphlibGraph } from "@dagrejs/graphlib";
+import graphlib from "@dagrejs/graphlib";
 
 import type { ParsedPresets, PresetBase, PresetKind } from "./types";
 
@@ -25,11 +25,10 @@ export type Graph = {
   edges: GraphEdge[];
 };
 
-export const makePresetId = (kind: PresetKind, name: string): string =>
-  `${kind}:${name}`;
+export const makePresetId = (kind: PresetKind, name: string): string => `${kind}:${name}`;
 
 export const buildGraph = (parsed: ParsedPresets): Graph => {
-  const graph = new GraphlibGraph({ directed: true, multigraph: true });
+  const graph = new graphlib.Graph({ directed: true, multigraph: true });
   const nodes: GraphNode[] = [];
   const nodeById = new Map<string, GraphNode>();
 
