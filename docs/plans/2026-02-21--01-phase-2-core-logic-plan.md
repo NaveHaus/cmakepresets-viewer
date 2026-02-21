@@ -72,7 +72,7 @@
 
 ---
 
-## Step 2.3 (1–2 days): Deterministic IDs + collisions across kinds
+## Step 2.3 (1–2 days): Deterministic IDs + collisions across kinds ✅ Completed
 (Names can collide across kinds; Phase 2 includes multiple kinds.)
 
 ### Deliverables
@@ -116,7 +116,7 @@
 
 ---
 
-## Step 2.5 (1–2 days): Single public entrypoint for Phase 3 consumption
+## Step 2.5 (1–2 days): Single public entrypoint for Phase 3 consumption ✅ Completed
 
 ### Deliverables
 - `src/core/index.ts` exporting the stable API:
