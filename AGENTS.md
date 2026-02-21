@@ -30,3 +30,4 @@ The following requirements OVERRIDE any other conflicting instructions. When in 
 
 ## Mistakes to Avoid
 - To execute commands on Windows, prefer PowerShell 7 cmdlets over bash commands.
+- Do not store plans or specs outside `docs/plans` and `docs/specs`.
