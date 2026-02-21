@@ -10,6 +10,7 @@ export type GraphNode = {
     hidden?: boolean;
     displayName?: string;
     description?: string;
+    missing?: boolean;
   };
 };
 
@@ -24,14 +25,18 @@ export type Graph = {
   edges: GraphEdge[];
 };
 
+export const makePresetId = (kind: PresetKind, name: string): string =>
+  `${kind}:${name}`;
+
 export const buildGraph = (parsed: ParsedPresets): Graph => {
   const graph = new GraphlibGraph({ directed: true, multigraph: true });
   const nodes: GraphNode[] = [];
+  const nodeById = new Map<string, GraphNode>();
 
   const addPresetNodes = (kind: PresetKind, presets: PresetBase[]) => {
     presets.forEach((preset) => {
       const node: GraphNode = {
-        id: preset.name,
+        id: makePresetId(kind, preset.name),
         label: preset.name,
         kind,
         meta: {
@@ -43,6 +48,7 @@ export const buildGraph = (parsed: ParsedPresets): Graph => {
 
       graph.setNode(node.id, node);
       nodes.push(node);
+      nodeById.set(node.id, node);
     });
   };
 
@@ -64,11 +70,25 @@ export const buildGraph = (parsed: ParsedPresets): Graph => {
           return;
         }
 
+        const parentId = makePresetId(kind, parent);
         const edge: GraphEdge = {
-          from: preset.name,
-          to: parent,
+          from: makePresetId(kind, preset.name),
+          to: parentId,
           type: "inherits",
         };
+
+        if (!nodeById.has(parentId)) {
+          const missingNode: GraphNode = {
+            id: parentId,
+            label: parent,
+            kind,
+            meta: { missing: true },
+          };
+
+          graph.setNode(parentId, missingNode);
+          nodes.push(missingNode);
+          nodeById.set(parentId, missingNode);
+        }
 
         graph.setEdge(edge.from, edge.to, edge);
         edges.push(edge);
